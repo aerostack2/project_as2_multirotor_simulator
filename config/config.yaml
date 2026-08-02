@@ -21,12 +21,20 @@
       # plugin_name: "raw_odometry"
 
       # # Outdoor (GPS) Raw Odometry
+      # # GPS lives on raw_odometry only, ground_truth has no GPS path.
       # plugin_name: "raw_odometry"
       # raw_odometry:
-      #   use_gps: true  # earth->map comes from the first GPS fix. Replaces the old
-      #                  # use_gps + set_origin_on_start pair; the first fix now always
-      #                  # sets the origin, so set_origin_on_start no longer exists.
-      #                  # GPS lives on raw_odometry only — ground_truth has no GPS path.
+      #   use_gps: true  # Anchor earth at a GPS datum.
+      #   gps_origin:
+      #     set_origin: "first_gps"  # first_gps: the first fix received becomes the datum.
+      #                              # manual: use the coordinates below, so earth lands in
+      #                              #   the same place on every flight.
+      #                              # service: hold the first fix and wait for a set_origin
+      #                              #   call; earth->map is not published until then.
+      #     coordinates:  # Only used with "manual".
+      #       latitude: 0.0
+      #       longitude: 0.0
+      #       altitude: 0.0
 
       # # Ground truth fused with the IMU (simple_ekf)
       # # Might need imu values and covariance tuning.
