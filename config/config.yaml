@@ -16,6 +16,10 @@
     ros__parameters:
       # Indoor Ground Truth
       plugin_name: "ground_truth"
+      ground_truth:
+        # The simulator publishes its own ground truth twist, so take it from there. The
+        # plugin default is empty, which differentiates the pose instead.
+        twist_sub_topic: "ground_truth/twist"
 
       # # Indoor Raw Odometry
       # plugin_name: "raw_odometry"
