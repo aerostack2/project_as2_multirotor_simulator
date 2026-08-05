@@ -17,41 +17,8 @@
       # Indoor Ground Truth
       plugin_name: "ground_truth"
       ground_truth:
-        # The simulator publishes its own ground truth twist, so take it from there. The
-        # plugin default is empty, which differentiates the pose instead.
+        # Use twist from the simulator instead of default (differentiate the pose).
         twist_sub_topic: "ground_truth/twist"
-
-      # # Indoor Raw Odometry
-      # plugin_name: "raw_odometry"
-
-      # # Outdoor (GPS) Raw Odometry
-      # # GPS lives on raw_odometry only, ground_truth has no GPS path.
-      # plugin_name: "raw_odometry"
-      # raw_odometry:
-      #   use_gps: true  # Anchor earth at a GPS datum.
-      #   gps_origin:
-      #     set_origin: "first_gps"  # first_gps: the first fix received becomes the datum.
-      #                              # manual: use the coordinates below, so earth lands in
-      #                              #   the same place on every flight.
-      #                              # service: hold the first fix and wait for a set_origin
-      #                              #   call; earth->map is not published until then.
-      #     coordinates:  # Only used with "manual".
-      #       latitude: 0.0
-      #       longitude: 0.0
-      #       altitude: 0.0
-
-      # # Ground truth fused with the IMU (simple_ekf)
-      # # Might need imu values and covariance tuning.
-      # plugin_name: "simple_ekf"
-      # simple_ekf:
-      #   update_topics: ["gt_pose"]
-      #   gt_pose:
-      #     topic: "ground_truth/pose"
-      #     type: "geometry_msgs/msg/PoseStamped"
-      #     set_earth_map: true
-      #     use_message_covariance: false  # Use the fixed values below, not the message's.
-      #     position_covariance: [1e-4, 1e-4, 1e-4]     # x, y, z — variance, sigma ~ 1 cm
-      #     orientation_covariance: [1e-5, 1e-5, 1e-5]  # roll, pitch, yaw — sigma ~ 0.2 deg
 
   # Motion Controller
   controller_manager:
