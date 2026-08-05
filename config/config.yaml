@@ -14,13 +14,11 @@
   # State Estimator
   state_estimator:
     ros__parameters:
-      # Indoor Ground Truth 
+      # Indoor Ground Truth
       plugin_name: "ground_truth"
-      # # Indoor Raw Odometry
-      # plugin_name: "raw_odometry"
-      # # Outdoor (GPS)
-      # use_gps: true
-      # set_origin_on_start: true
+      ground_truth:
+        # Use twist from the simulator instead of default (differentiate the pose).
+        twist_sub_topic: "ground_truth/twist"
 
   # Motion Controller
   controller_manager:
